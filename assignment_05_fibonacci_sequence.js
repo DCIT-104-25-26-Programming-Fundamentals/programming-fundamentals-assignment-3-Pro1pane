@@ -55,3 +55,56 @@
 // =============================================================================
 
 
+// Part A: Print the first N Fibonacci terms
+function printFibonacci(n) {
+    if (n <= 0) {
+        console.log("Error: N must be a positive integer.");
+        return;
+    }
+
+    let first = 0;
+    let second = 1;
+    let sequence = "";
+
+    for (let i = 0; i < n; i++) {
+        sequence += first + " ";
+
+        let next = first + second;
+        first = second;
+        second = next;
+    }
+
+    console.log("Fibonacci sequence: " + sequence.trim());
+}
+
+// Part B: Check if a number is a Fibonacci number
+function isFibonacci(number) {
+    let first = 0;
+    let second = 1;
+
+    while (first < number) {
+        let next = first + second;
+        first = second;
+        second = next;
+    }
+
+    if (first === number) {
+        console.log(number + " is a Fibonacci number.");
+    } else {
+        console.log(number + " is NOT a Fibonacci number.");
+    }
+}
+
+// Main function
+function main() {
+    // Part A
+    let n = readlineSync.questionInt("How many terms? ");
+    printFibonacci(n);
+
+    // Part B
+    let number = readlineSync.questionInt("Enter a number to check: ");
+    isFibonacci(number);
+}
+
+// Run the program
+main();

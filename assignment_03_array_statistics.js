@@ -44,3 +44,56 @@
 // =============================================================================
 
 
+// Function to calculate the sum of an array of numbers
+function calculateSum(numbers) {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+    return sum;
+}
+// Function to calculate the average of an array of numbers
+function calculateAverage(numbers) {
+    let sum = calculateSum(numbers);
+    return sum / numbers.length;
+}
+// Function to find the maximum number in an array
+function findMaximum(numbers) {
+    let max = numbers[0];
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i];
+        }
+    }
+    return max;
+}
+// Function to find the minimum number in an array
+function findMinimum(numbers) {
+    let min = numbers[0];
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] < min) {
+            min = numbers[i];
+        }
+    }
+    return min;
+}
+// Main function to run the program
+function main() {
+    const readlineSync = require('readline-sync');
+    const n = readlineSync.questionInt('How many numbers? ');
+    if (n <= 0) {
+        console.log('Error: Please enter a positive integer.');
+        return;
+    }
+    const numbers = [];
+    for (let i = 1; i <= n; i++) {
+        numbers.push(readlineSync.questionInt(`Enter number ${i}: `));
+    }
+    console.log('\nResults:');
+    console.log(`Sum:     ${calculateSum(numbers)}`);
+    console.log(`Average: ${calculateAverage(numbers).toFixed(1)}`);
+    console.log(`Maximum: ${findMaximum(numbers)}`);
+    console.log(`Minimum: ${findMinimum(numbers)}`);
+    // Call the main function to execute the program
+}
+main();
